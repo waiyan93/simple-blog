@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Post;
 
+use Session;
+
 class PostController extends Controller
 {
     /**
@@ -15,7 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        //create a variable and store all the blog post in it
+        $posts = Post::orderBy('updated_at','desc')->get();
+        //return view and pass the data in the above variable
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -43,6 +48,8 @@ class PostController extends Controller
         ));
         //store the data
         $post_id = Post::create($request->all())->id;
+        //ouput a message
+        Session::flash('success', 'The blog post was successfully save!');
         //redirect to another page
         return redirect()->route('posts.show', $post_id);
     }
@@ -55,7 +62,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.show', ['post' => $post]);
     }
 
     /**
