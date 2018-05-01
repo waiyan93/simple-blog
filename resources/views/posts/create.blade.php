@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('title', '| Create New Post')
+@section('stylesheets')
+ {!! Html::style('css/parsley.css') !!}
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
@@ -9,4 +13,8 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    {!! Html::script('js/jquery.min.js') !!}
+    {!! Html::script('js/parsley.min.js') !!}
 @endsection
