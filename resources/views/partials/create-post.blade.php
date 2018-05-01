@@ -1,4 +1,4 @@
-{{ Form::open(['route' => 'posts.create','method' => 'POST']) }}
+{{ Form::open(['route' => 'posts.store','method' => 'POST']) }}
 <div class="form-group">
     <label for="title">Title :</label>
     {{ Form::text('title', null, ['class' => 'form-control', 
