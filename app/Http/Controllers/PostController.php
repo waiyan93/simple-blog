@@ -74,7 +74,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        //find the post and save in a variable
+        $post = Post::findOrFail($id);
+        //return  the view and pass the data into the variable
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -86,7 +89,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validate the request data
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'body' => 'required'
+        ]);
+        //save the data into database
+        $post = Post::findOrFail($id);
+        $post->update([
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
+        //set flash data with success message
+        Session::flash('success', 'This post was successfully updated.');
+        //redirect with flash data to show page
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
