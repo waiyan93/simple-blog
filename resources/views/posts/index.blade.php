@@ -15,6 +15,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+             @include('partials.messages')
                 <table class="table">
                     <thead>
                         <th>#</th>
