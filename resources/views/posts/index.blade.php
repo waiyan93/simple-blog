@@ -27,7 +27,7 @@
                     <tbody>
                         @foreach ($posts as $key => $post)
                             <tr>
-                                <th>{{ $key+1 }}</th>
+                                <th>{{ $post->id }}</th>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ substr($post->body, 0, 50) }}{{ strlen($post->body) > 50 ? "....." : ""}}</td>
                                 <td>{{ date('M j, Y', strtotime($post->created_at)) }}</td>
@@ -39,6 +39,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="text-center">
+                    {!! $posts->links() !!}
+                </div>
             </div>
         </div>
     </div>
