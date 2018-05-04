@@ -36,7 +36,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                      <li><a href="{{ route('pages.index') }}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a></li>
+                      <li><a href="{{ route('pages.about') }}" class="nav-link {{ Request::is('/about') ? 'active' : '' }}">About</a></li>
+                      <li><a href="{{ route('pages.contact') }}" class="nav-link {{ Request::is('/contact') ? 'active' : '' }}">Contact</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

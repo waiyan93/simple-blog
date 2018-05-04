@@ -41,6 +41,7 @@
                 </table>
                 <div class="text-center">
                     {!! $posts->links() !!}
+                    {{ $posts->currentPage() }} of {{ $posts->lastPage() }}
                 </div>
             </div>
         </div>
