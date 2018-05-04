@@ -12,6 +12,8 @@
             <div class="col-md-8">
                 <label for="title">Title :</label>
                 {{ Form::text('title', null, ['class' => 'form-control form-control-lg']) }}
+                <label for="slug" class="form-spacing-top">Slug :</label>
+                {{ Form::text('slug', null, ['class' => 'form-control']) }}
                 <label for="body" class="form-spacing-top">Body :</label>
                 {{ Form::textarea('body', null, ['class' => 'form-control']) }}
             </div>

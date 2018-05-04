@@ -12,13 +12,18 @@
                 <div class="card">
                     <div class="card-body">
                         <dl class="row">
-                            <dt class="col-sm-4">Created At:</dt>
-                            <dd class="col-sm-8">{{ date('M j, Y h :ia', strtotime($post->created_at)) }}</dd>
+                            <dt class="col-sm-3">Url :</dt>
+                            <dd class="col-sm-9"><small><a href="{{ route('blog.single', $post->slug) }}">{{ route('blog.single', $post->slug) }}</a></small></dd>
                         </dl>
 
                         <dl class="row">
-                            <dt class="col-sm-4">Updated At:</dt>
-                            <dd class="col-sm-8">{{ date('M j, Y h :ia', strtotime($post->updated_at)) }}</dd>
+                            <dt class="col-sm-5">Created At :</dt>
+                            <dd class="col-sm-7">{{ date('M j, Y h :ia', strtotime($post->created_at)) }}</dd>
+                        </dl>
+
+                        <dl class="row">
+                            <dt class="col-sm-5">Updated At :</dt>
+                            <dd class="col-sm-7">{{ date('M j, Y h :ia', strtotime($post->updated_at)) }}</dd>
                         </dl>
                         <hr>
                         <div class="row">

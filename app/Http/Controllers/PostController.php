@@ -44,12 +44,16 @@ class PostController extends Controller
         //validate the data
         $this->validate($request, array(
             'title' => 'required|max:255',
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
             'body' => 'required'
         ));
+
         //store the data
         $post_id = Post::create($request->all())->id;
+
         //ouput a message
         Session::flash('success', 'The blog post was successfully save!');
+
         //redirect to another page
         return redirect()->route('posts.show', $post_id);
     }
@@ -76,6 +80,7 @@ class PostController extends Controller
     {
         //find the post and save in a variable
         $post = Post::findOrFail($id);
+
         //return  the view and pass the data into the variable
         return view('posts.edit', ['post' => $post]);
     }
@@ -89,19 +94,33 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //validate the request data
-        $this->validate($request, [
-            'title' => 'required|max:255',
-            'body' => 'required'
-        ]);
-        //save the data into database
         $post = Post::findOrFail($id);
+        //validate the request data
+        if($request->slug == $post->slug)
+        {
+            $this->validate($request, [
+                'title' => 'required|max:255',
+                'body' => 'required'
+            ]);
+        }else{
+            $this->validate($request, [
+                'title' => 'required|max:255',
+                'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+                'body' => 'required'
+            ]);
+        }
+
+        //save the data into database
+        
         $post->update([
             'title' => $request->title,
+            'slug' => $request->slug,
             'body' => $request->body
         ]);
+
         //set flash data with success message
         Session::flash('success', 'This post was successfully updated.');
+
         //redirect with flash data to show page
         return redirect()->route('posts.show', $post->id);
     }
