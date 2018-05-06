@@ -17,6 +17,8 @@ Route::get('blog/{slug}', 'BlogController@single')->name('blog.single')->where('
 
 Route::resource('posts', 'PostController');
 
+Route::resource('books', 'BookController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

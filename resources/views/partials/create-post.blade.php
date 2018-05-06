@@ -24,9 +24,9 @@
                                     'maxlength' => '255'
         ])
     }}
-      @if ($errors->has('title'))
+      @if ($errors->has('slug'))
         <span class="help-block">
-            <strong class="text-danger">{{ $errors->first('title') }}</strong>
+            <strong class="text-danger">{{ $errors->first('slug') }}</strong>
         </span>
     @endif
 </div>
