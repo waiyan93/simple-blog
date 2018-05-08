@@ -141,4 +141,5 @@ class PostController extends Controller
         Session::flash('success', 'The post was successfully deleted.');
         return redirect()->route('posts.index');
     }
+
 }

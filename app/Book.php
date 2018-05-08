@@ -16,4 +16,17 @@ class Book extends Model
     {
         return $this->belongsTo('App\Publisher');
     }
+    public function getCoverImageUrlAttribute($value)
+    {
+        if(!is_null($this->cover_image))
+        {
+            $imageUrl = "";
+            $imagePath = public_path(). "/uploads/" . $this->cover_image;
+            if(file_exists($imagePath))
+            {
+                $imageUrl = asset("uploads/". $this->cover_image);
+            }
+            return $imageUrl;
+        }
+    }
 }
